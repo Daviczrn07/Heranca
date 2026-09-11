@@ -1,37 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Heranca;
 
-namespace Heranca
+namespace Herança
 {
-    public class AnimalZoo
+    internal class Program
     {
-        public virtual void EmitirSom()
+        static void Main(string[] args)
         {
-            Console.WriteLine("animal emitindo som");
-        }
-    }
-    public class Leao : AnimalZoo
-    {
-        public override void EmitirSom()
-        {
-            Console.WriteLine("Leão: Roar!");
-        }
-    }
+            Retangulo r = new Retangulo();
+            r.Altura = 5;
+            r.Largura = 5;
 
-    public class Macaco : AnimalZoo
-    {
-        public override void EmitirSom()
-        {
-            Console.WriteLine("Macaco: UGH UGH AAH AAH!");
-        }
-    }
+            Console.WriteLine($"Altura Quadrado: {r.Altura}");
+            Console.WriteLine($"Largura Quadrado: {r.Largura}");
+            Console.WriteLine($"area Do Quadrado: {r.CalcularArea():F2}");
 
-    public class Cobra : AnimalZoo
-    {
-        public override void EmitirSom()
-        {
-            Console.WriteLine("Cobra: SSSSSSSSSSSSS!");
+            Circulo c = new Circulo();
+            c.Raio = 5;
+
+
+            Console.WriteLine($"Raio do Circulo: {c.Raio}");
+            Console.WriteLine($"Area do Circulo: {c.CalcularArea():F2}");
         }
     }
 }
