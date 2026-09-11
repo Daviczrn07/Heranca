@@ -1,0 +1,45 @@
+﻿using System.Collections.Generic;
+using Heranca;
+
+namespace Herança
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Guerreiro guerreiro = new Guerreiro("Arthur", 100, 20, 15);
+            Mago mago = new Mago("Merlim", 80, 12, 50);
+
+            Console.WriteLine("INÍCIO DO COMBATE");
+            Console.WriteLine($"{guerreiro.Nome} (Guerreiro) VS {mago.Nome} (Mago)");
+
+            int turno = 1;
+            Personagem atacanteAtual = guerreiro;
+            Personagem defensorAtual = mago;
+
+            while (guerreiro.EstaVivo() && mago.EstaVivo())
+            {
+                Console.WriteLine($"--- Turno {turno} ---");
+                atacanteAtual.Atacar(defensorAtual);
+                Console.WriteLine();
+
+                if (!defensorAtual.EstaVivo())
+                    break;
+
+                Personagem temp = atacanteAtual;
+                atacanteAtual = defensorAtual;
+                defensorAtual = temp;
+
+                turno++;
+            }
+
+            Console.WriteLine("=== FIM DA BATALHA ===");
+            if (guerreiro.EstaVivo())
+                Console.WriteLine($"O vencedor é {guerreiro.Nome} (Guerreiro)!");
+            else
+                Console.WriteLine($"O vencedor é {mago.Nome} (Mago)!");
+
+            Console.ReadLine();
+        }
+    }
+}
